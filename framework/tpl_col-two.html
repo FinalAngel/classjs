@@ -1,0 +1,33 @@
+{% extends "tpl_master.html" %}
+{% load i18n cms_tags menu_tags %}
+
+{% block tpl_id %}tpl_col-two{% endblock %}
+
+{% block extend_master %}
+<!-- start: content -->
+<div id="main">
+	<div class="content container_24 clearfix">
+		{% block feature %}<div class="feature">{% with "940" as width %}{% placeholder feature %}{% endwith %}</div>{% endblock feature %}
+		<div class="grid_16 content">
+			{% block col_content %}
+				{% block page_title %}<h1>{% page_attribute title %}</h1>{% endblock page_title %}
+
+				{% with "620" as width %}
+					{% placeholder col_content %}
+				{% endwith %}
+			{% endblock col_content %}
+		</div>
+		<div class="grid_8 sidebar">
+			<!-- sub navigation -->
+			{% spaceless %}{% show_menu 1 100 0 100 "menu/subnav.html" %}{% endspaceless %}
+		
+			{% block col_sidebar %}
+				{% with "300" as width %}
+					{% placeholder col_sidebar %}
+				{% endwith %}
+			{% endblock col_sidebar %}
+		</div>
+	</div>
+</div>
+<!-- end: content -->
+{% endblock extend_master %}

@@ -1,0 +1,181 @@
+@charset "utf-8";
+/**
+ * @framework	CFF - Classy Frontend Framework
+ * @author		Angelo Dini
+ * @copyright	http://www.divio.ch under the BSD Licence
+ */
+
+/*##################################################|*/
+/* #CSS RESET# */
+html,body,div,span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,legend,label,input,textarea,table,caption,tbody,tfoot,thead,tr,th,td,cite,pre,strong,em,img,a,p,blockquote,q,code,dfn,samp,kbd,var,del,ins,sub,sup,acronym,abbr,address,applet,object,iframe { 
+	font-size:100%; font-style:normal; font-weight:normal;
+	text-align:left; vertical-align:baseline;
+	margin:0; padding:0;
+	border:none; background:transparent;
+}
+
+/* #CLEAR/CLEARFIX# */
+.clear { clear:both; display:block; width:0; height:0; overflow:hidden; visibility:hidden; }
+.clearfix:after { clear:both; content:"."; display:block; font-size:0; height:0; line-height:0; visibility:hidden; }
+html>body .clearfix { display:block; } .clearfix { display:inline-block; }
+/* hides from IE-Mac \*/
+* html .clearfix, *:first-child+html .clearfix { height:1%; }
+
+/*##################################################|*/
+/* #GLOBAL SETTINGS <create 12px base># */
+/* html { min-height:101%; } show scrollbar */
+html { font-size:100.01%; -webkit-text-size-adjust:none; -webkit-tap-highlight-color:inherit; }
+body {
+	color:#000;
+	font:75%/1.6 "Helvetica Neue",Helvetica,Arial,sans-serif; /* <@line-height: (*1.35(round) = line height)> */
+	margin:0; background:#fff;
+}
+
+/*##################################################|*/
+/* #TEXT SETUP# <@base: 12px> */
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table, fieldset li { margin-bottom:15px; }
+div { outline:0 none; }
+
+address, cite, code, dfn, kbd, samp, var { white-space:normal; }
+abbr, acronym { cursor:help; border-bottom:1px dotted #999; }
+
+sup { vertical-align:text-top; font-size:0.80em; }
+sub { vertical-align:text-bottom; font-size:0.80em; }
+
+ins { text-decoration:none }
+del { text-decoration:line-through }
+
+blockquote,q { quotes:none }
+blockquote:before, blockquote:after, q:before, q:after { content:''; content:none }
+
+/* #TEXT SETUP/Style# */
+strong { font-weight:bold; }
+em { font-style:italic; }
+.u { text-decoration:underline; }
+.o { text-decoration:line-through; }
+pre { white-space:pre; }
+span { font-weight:inherit; }
+
+/* #TEXT SETUP/Images# */
+img, object, applet, iframe { outline:none; }
+
+/* #TEXT SETUP/Breaks# */
+hr { height:1px; border:none; padding:0; margin:15px 0; clear:both;
+	 border-top-width:1px; border-bottom:1px dotted #000; } /* margin needs ie fix (-5px) */
+
+/* #TEXT SETUP/Lists# */
+ul { margin-left:15px; list-style:disc; }
+ol { margin-left:15px; list-style:decimal; }
+ol, ul li { padding-left:5px; }
+
+dl {}
+dt { font-weight:bold; }
+dd { padding-left:20px; }
+
+/* #TEXT SETUP/Highlight# */
+/*::selection { background:#eee; } ::-moz-selection { background:#eee; }
+img::selection { background:transparent; } img::-moz-selection { background:transparent; }*/
+
+/*##################################################|*/
+/* #ANCHOR SETUP# <@base: 12px> */
+a { text-decoration:underline; cursor:pointer; }
+a:hover { text-decoration:none; }
+a:active { text-decoration:underline; }
+a:focus {}
+a:link, a:visited {}
+
+/*##################################################|*/
+/* #TABLE SETUP# <@base: 12px> */
+table { font-size:100%; width:auto; border-collapse:collapse; border-spacing:0; border-color:#fff; }
+caption { text-align:left; }
+th, caption { font-weight:bold; }
+th, td { font-size:inherit; text-align:left; vertical-align:middle; }
+.tbl_default { width:100%; }
+
+/*##################################################|*/
+/* #FORM SETUP# <@base: 12px> */
+fieldset {}
+fieldset ol { list-style:none; padding:0; margin:0; }
+
+fieldset legend { font-weight:bold; text-transform:uppercase; }
+fieldset label { cursor:pointer; }
+fieldset label span { cursor:help; }
+fieldset select { padding:2px; }
+fieldset option { padding-left:5px; }
+
+.align-horizontal {} /* - */
+.align-horizontal li { clear:both; overflow:hidden; zoom:1; } /* clear hack */
+.align-horizontal label { float:left; width:30%; padding-top:5px; }
+.align-horizontal div { float:left; width:70%; }
+.align-horizontal div label { float:none; width:auto; margin-right:10px; }
+.align-horizontal .hbreak div { position:relative; left:0; top:5px; }
+.align-horizontal .hbreak div label { padding-left:5px; }
+
+.align-vertical {} /* | */
+
+/* #FORM SETUP/Fields# */
+input, textarea, select {
+	font:inherit; color:inherit; font-weight:normal;
+	padding:5px 6px; margin:0;
+	border:1px solid #999;
+	background:#fff;
+}
+input[type=text]:hover, input[type=password]:hover, textarea:hover, select:hover, /* skip ie < 6 */
+input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus {/* color:#000; border:1px solid #000; */}
+
+.input_text { width:auto; }
+.input_select { cursor:pointer; }
+.input_checkbox, .input_radio, .radiocheck input { cursor:pointer; border:none; background:none; }
+.radiocheck ul { list-style:none; margin:0; }
+.radiocheck ul li { padding:0 0 2px; margin:0; }
+
+/*##################################################|*/
+/* #BUTTON SETUP# <@base: 12px> */
+.btn, .btn input, .btn span { float:none;
+	display:-moz-inline-box; display:-moz-inline-stack; -moz-display:inline-block;
+	display:inline-block; zoom:1; *display:inline;
+	cursor:pointer; word-wrap:break-word;
+	text-align:left; vertical-align:top; text-decoration:none;
+	width:auto; overflow:visible;
+	padding:0; margin:0; line-height:1.3; /* required for anchor */
+	border:none; background:none;
+}
+.btn {
+	text-decoration:none !important;
+	height:25px; overflow:hidden;
+	/* image left */
+}
+.btn input, .btn span {
+	font-size:12px; /* ie6 font-fix */
+	padding:4px 10px;
+	/* image right */
+}
+.btn span { padding:5px 10px; }
+
+/* image button */
+.btn-image input { padding:0; margin:0; border:none; background:none; }
+
+/*##################################################|*/
+/* #HELPERS# <@base: 12px> */
+.left { float:left; }
+.right { float:right !important; }
+.align-left { text-align:left !important; }
+.align-right { text-align:right !important;; }
+.align-center { text-align:center !important; }
+.nofloat { float:none !important; }
+.nospace { margin:0 !important; padding:0 !important; }
+.nowrap { white-space:nowrap; }
+.hidden { display:none; }
+.offset { text-indent:-9999px; overflow:hidden; }
+.print { display:none; }
+.uppercase { text-transform:uppercase; }
+.disable,.disabled { cursor:default; }
+.fullwidth { width:100%; }
+.small { font-size:0.90em; }
+
+.padding-top { padding-top:15px !important; }
+.padding-bot { padding-bottom:15px !important; }
+.padding { padding-top:15px !important; margin-bottom:15px !important; }
+.margin-top { margin-top:15px !important; }
+.margin-bot { margin-bottom:15px !important; }
+.margin { margin-top:15px !important; margin-bottom:15px !important; }

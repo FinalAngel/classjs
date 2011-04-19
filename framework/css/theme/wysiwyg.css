@@ -1,0 +1,25 @@
+@charset "utf-8";
+/**
+ * @framework	CFF - Classy Frontend Framework
+ * @author		Angelo Dini
+ * @copyright	http://www.divio.ch under the BSD Licence */
+   @import url("../base.css");
+   @import url("../desktop.css");
+
+/*##################################################|*/
+/* #BASE# */
+#tinymce { padding:0.67em; }
+
+body {
+	font:13px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color:#666;
+}
+
+a { color:#5b80b2; font-weight:bold; text-decoration:none; }
+a:hover { color:#000; text-decoration:underline; }
+
+h1, h2, h3, h4, h5, h6 { font-size:13px; font-weight:bold; }
+h1 { color:#666; font-size:17px; }
+h2 { color:#999; font-size:17px; }
+h3 { color:#000; }
+h4, h5, h6 { color:#333; }

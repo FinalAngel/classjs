@@ -1,0 +1,48 @@
+{% load i18n cms_tags sekizai_tags %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!--[if IE]><meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1" /><![endif]-->
+	<title>{% block title %}{% block title_prefix %}{% page_attribute page_title %}{% endblock title_prefix %}{% block title_extra %}{% endblock title_extra %}{% block title_suffix %}{% if site_settings.site.name %} - {{ site_settings.site.name }}{% endif %}{% endblock title_suffix %}{% endblock title %}</title>
+	{% block meta_tags %}{% for tag in meta_tags %}{{ tag|lower }}{% endfor %}{% endblock meta_tags %}
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<link rel="shortcut icon" type="image/x-icon" href="{% if site_settings.favicon %}{{ site_settings.favicon }}{% else %}{{ MEDIA_URL }}favicon.ico{% endif %}" />
+	<link rel="apple-touch-icon" type="image/png" href="{{ MEDIA_URL }}favicon.png" />
+	<link rel="image_src" type="image/jpeg" href="{{ MEDIA_URL }}favicon.jpg" />
+	{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/base.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/desktop.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/print.css" media="print" />
+	<style type="text/css">/*<![CDATA[*/@import url("{{ MEDIA_URL }}css/mobile.css") screen and (max-width: 480px);/*]]>*/</style>
+	{% endblock css %}{% render_block "css" %}
+	{% block css_conditionals %}
+	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/ie6.css" media="screen, projection" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/ie8.css" media="screen, projection" /><![endif]-->
+	{% endblock css_conditionals %}
+	{% block extrahead %}{% endblock extrahead %}
+</head>
+<body class="{% block tpl_id %}tpl_master{% endblock %} {{ LANGUAGE_CODE }}{% if not user.is_authenticated %} anonymus{% endif %}">
+<!-- start: base -->
+{% spaceless %}
+	{% block extend_base %}{% endblock extend_base %}
+{% endspaceless %}
+<!-- end: base -->
+{% addtoblock "js" %}<script type="text/javascript" src="{{ MEDIA_URL }}js/libs/jquery-1.4.4.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="{{ MEDIA_URL }}js/libs/classy-1.3.1.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="{{ MEDIA_URL }}js/plugins.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="{{ MEDIA_URL }}js/base.js"></script>{% endaddtoblock %}
+{% render_block "js" %}{% spaceless %}
+{% if GOOGLE_ANALYTICS_ID %}{% include "inc/analytics.html" %}{% endif %}
+<noscript>
+<p id="require-js">{% trans "Please activate JavaScript to enable all features." %}
+<a href="http://base.google.com/support/bin/answer.py?hl=de&amp;answer=23852">{% trans "Read this page for more help" %}</a>.</p>
+</noscript>
+<!--[if lte IE 6]>
+<p id="require-browser">
+{% blocktrans %}The browser you are using is <strong>out of date</strong>. It has known <strong>security flaws</strong> and <strong>disadvantages</strong> and <strong>a limited feature set</strong>.<br />
+You will <strong>not</strong> be able to use all of the features from this website.
+<a href="http://www.browserchoice.eu/BrowserChoice/browserchoice_de.htm">Please update your browser</a>.{% endblocktrans %}
+</p>
+<![endif]-->
+</body>
+</html>{% endspaceless %}
