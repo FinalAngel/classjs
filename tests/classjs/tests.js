@@ -13,7 +13,7 @@ test('Core functionality', function() {
 	// tests
 	equal(typeof(window.Class), 'function', 'class is available within the window object');
 	equal(typeof(Class), 'function', 'Class is available to be called');
-	//equal(objIsEmpty(Class.prototype), true, 'prototype is empty');
+	equal(objIsEmpty(Class.prototype), true, 'prototype is empty');
 
 	testConstructor(Class);
 });
@@ -43,11 +43,8 @@ test('Class constructor', function () {
 	equal(typeof(Correct.prototype.isCorrect), 'function', 'invoking class with new keyword works');
 	equal(typeof(Wrong.prototype.isWrong), 'function', 'invoking class without the new keyword works');
 
-console.log('------------------');
-	// todo new instance has to work as well
-	console.log(Correct());
-
-console.log('------------------');
+	equal(typeof(new Correct().isCorrect), 'function', 'invoking instance with new keyword works');
+	equal(typeof(Wrong().isWrong), 'function', 'invoking instance without the new keyword works');
 
 	testConstructor(Animal);
 });
@@ -258,7 +255,7 @@ test('Class method parent', function () {
 	equal(Cat.live(), '2 call SECOND live', 'parent works on second invocation');
 	equal(typeof(Cat.die), 'function', 'extending function has been attached');
 
-	ok(Cat.parent(), 'parent is attached to the normal object')
+	ok(Cat.parent(), 'parent is attached to the normal object');
 });
 
 test('Cleanup check', function () {
