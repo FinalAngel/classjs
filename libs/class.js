@@ -6,34 +6,33 @@
 (function(){
 
 	var Original = window.Class;
-	var Constructor = function(){};
+	var Constructor = function () {};
 
 	var Class = this.Class = function (obj) {
 		obj = obj || {};
-		// creating constructor
-		Constructor = function() {
-			return (this.initialize) ? this.initialize.apply(this, arguments) : this;
+		// call initialize if given
+		Constructor = function () {
+			var self = window === this ? copy(Constructor.prototype) : this;
+			return (this.initialize) ? this.initialize.apply(this, arguments) : self;
 		};
-		// handle implement
+		// adds implement to the class itself
 		if(obj.implement) {
 			obj = extend(obj, implement(obj.implement));
 			obj.implement = null;
 		}
-		// assign prototype
+		// assign prototypes
 		Constructor.prototype = copy(obj);
-		// save untouched object as parent
+		// save initial object as parent so it can be called by this.parent
 		Constructor._parent = copy(obj);
-		// attaching properties
-		for(var i = 0, values = ['extend', 'implement', 'getOptions', 'setOptions', 'parent']; i < values.length; i++) {
+		// attaching class properties to constructor
+		for(var i = 0, values = ['extend', 'implement', 'getOptions', 'setOptions']; i < values.length; i++) {
 			Constructor[values[i]] = Class[values[i]];
 		}
-		console.log(Constructor);
 
-		// return
 		return Constructor;
 	};
 
-	// implementing extend
+	// adding class method extend
 	Class.extend = function (obj) {
 		// check if implement is passed through extend
 		if(obj.implement) {
@@ -41,9 +40,9 @@
 			// remove implement from obj
 			delete obj.implement;
 		}
-		// invoke parent if its called within a method
+		// check if we should invoke parent when its called within a method
 		for(var key in obj) {
-			obj[key] = typeof obj[key] === 'function' && /parent/.test(obj[key].toString()) ? (function(method, name) {
+			obj[key] = typeof obj[key] === 'function' && /parent/.test(obj[key].toString()) ? (function (method, name) {
 				return function () {
 					this.parent = Constructor._parent[name];
 					return method.apply(this, arguments);
@@ -54,21 +53,21 @@
 		this._parent = extend(this._parent, obj, true);
 		// assign new prototype
 		this.prototype = extend(this.prototype, obj);
+		// return the class if its assigned
+		return this;
 	};
 
-	// implementing implement
+	// adding class method implement
 	Class.implement = function (array) {
-		// assigning new prototype
 		return this.prototype = extend(this.prototype, implement(array));
 	};
 
-	// get options back from constructor
+	// gets options from constructor
 	Class.getOptions = function () {
-		// return the available options or an empty object
 		return this.prototype.options || {};
 	};
 
-	// set options for constructor
+	// sets options for constructor
 	Class.setOptions = function (options) {
 		return this.prototype.options = extend(this.prototype.options, options);
 	};
@@ -82,14 +81,14 @@
 
 	// helper for assigning methods to a new prototype
 	function copy(obj) {
-		var F = function() {};
+		var F = function () {};
 			F.prototype = obj.prototype || obj;
 		return new F();
 	}
 
 	// helper for merging two object with each other
 	function extend(oldObj, newObj, preserve) {
-		// return available object if
+		// failsave if something goes wrong
 		if(!oldObj || !newObj) return oldObj || newObj || {};
 
 		// make sure we work with copies
@@ -100,8 +99,8 @@
 			if(Object.prototype.toString.call(newObj[key]) === '[object Object]') {
 				extend(oldObj[key], newObj[key]);
 			} else {
-				// if preserce is active and the oldObj already has the required method
-				// we skip the reassigning
+				// if preserve is set to true oldObj will not be overwritten by newObj if
+				// oldObj has already a method key
 				oldObj[key] = (preserve && oldObj[key]) ? oldObj[key] : newObj[key];
 			}
 		}
@@ -117,7 +116,7 @@
 			// check if a class is implemented and save its prototype
 			if(typeof(array[i]) === 'function') array[i] = array[i].prototype;
 
-			// array[i].implement || array[i].implement
+			// we use implement again if array has the apropriate methiod, otherwise we extend
 			if(array[i].implement) {
 				collection = implement(array[i].implement);
 			} else {
