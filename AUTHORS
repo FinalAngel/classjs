@@ -1,6 +1,9 @@
-Classy is written and maintained by Armin Ronacher.
+class.js and the class.js modules are written and maintained by:
 
-- Armin Ronacher <armin.ronacher@active-4.com>
+- Angelo Dini <angelo.dini@divio.ch>
 
-Implementation is heavily inspired by John Resig's simple JavaScript
-inheritance: http://ejohn.org/blog/simple-javascript-inheritance/
+class.js is heavily inspired by the following libraries:
+
+- MooTools Class <http://mootools.net/>
+- JS.Class <http://jsclass.jcoglan.com>
+- Classy <http://classy.pocoo.org/>
