@@ -1,7 +1,7 @@
 class.js - simple class based inheritance
 =========================================
 
-https://github.com/finalangel/classjs-library
+https://github.com/finalangel/classjs
 
 class.js is a JavaScript library for building class based object-oriented programms using
 JavaScript's prototypal inheritance. It strives to mimic classical class inheritance
