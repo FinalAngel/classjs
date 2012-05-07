@@ -1,5 +1,5 @@
 /**
- * @author		Angelo Dini
+ * @author      Angelo Dini
  * @version     1.0 Beta 2
  * @copyright	Distributed under the BSD Licence.
  */
@@ -83,9 +83,7 @@
 	};
 
 	// returns current running version
-	Class.version = function () {
-		return VERSION;
-	};
+	Class.version = VERSION;
 
 	// helper for assigning methods to a new prototype
 	function copy(obj) {

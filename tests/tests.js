@@ -260,7 +260,7 @@ test('Class method parent', function () {
 
 test('Class method version', function () {
 	// tests
-	equal(typeof(Class.version()), 'string', 'Class.version() can be called');
+	equal(typeof(Class.version), 'string', 'Class.version() can be called');
 });
 
 test('Cleanup check', function () {
