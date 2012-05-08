@@ -44,7 +44,7 @@ test('Class constructor', function () {
 	equal(typeof(Wrong.prototype.isWrong), 'function', 'invoking class without the new keyword works');
 
 	equal(typeof(new Correct().isCorrect), 'function', 'invoking instance with new keyword works');
-	equal(typeof(Wrong().isWrong), 'function', 'invoking instance without the new keyword works');
+	equal(typeof(new Wrong().isWrong), 'function', 'invoking instance with new keyword works');
 
 	testConstructor(Animal);
 });
@@ -263,6 +263,13 @@ test('Class method version', function () {
 	equal(typeof(Class.version), 'string', 'Class.version() can be called');
 });
 
+test('Class multiple versions', function () {
+	// tests
+	// TODO we need to test for multiple class versions
+	// TODO we need to test if classy is implemented
+	// TODO we need to test for library implementation
+});
+
 test('Cleanup check', function () {
 	// tests
 	equal(typeof(window.Class), 'function', 'class is available within the window object');
@@ -270,6 +277,39 @@ test('Cleanup check', function () {
 	equal(objIsEmpty(Class.prototype), true, 'prototype is empty');
 
 	testConstructor(Class);
+});
+
+test('Demo examples', function () {
+	var Dimmer = new Class({
+		initialize: function (container) {
+			this.container = document.getElementById(container);
+		},
+		showDim: function () {
+			return 'show dim';
+		},
+		hideDim: function () {
+			return 'hide dim';
+		}
+	});
+
+	var Lightbox = new Class({
+		initialize: function (container) {
+
+		},
+		show: function () {
+			this.showDim();
+		},
+		hide: function () {
+			this.hideDim();
+		},
+		hideDim: function () {
+			this.parent();
+			return 'hide dim and all other elements';
+		}
+	});
+
+	// tests
+	equal(typeof(Class.version), 'string', 'Class.version() can be called');
 });
 
 /**
