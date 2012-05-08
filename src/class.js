@@ -3,7 +3,9 @@
  * @version     1.0 Beta 2
  * @copyright	Distributed under the BSD Licence.
  */
+
 (function(){
+	"use strict";
 
 	// saving constants
 	var VERSION = '1.0 Beta 2';
@@ -11,7 +13,7 @@
 	var CONSTRUCTOR = function () {};
 
 	// creating global class variable
-	var Class = this.Class = function (obj) {
+	var Class = window.Class = function (obj) {
 		obj = obj || {};
 		// call initialize if given
 		CONSTRUCTOR = function () {
@@ -39,6 +41,7 @@
 	Class.extend = function (obj) {
 		// check if implement is passed through extend
 		if(obj.implement) {
+			// TODO implementing and overwriting own methods (testcase)
 			this.prototype = extend(this.prototype, implement(obj.implement));
 			// remove implement from obj
 			delete obj.implement;
