@@ -1,7 +1,7 @@
 /**
  * @author      Angelo Dini
- * @version     1.0 Beta 2
- * @copyright	Distributed under the BSD Licence.
+ * @version     1.0 Beta 1
+ * @copyright	Distributed under the BSD License.
  */
 
 (function(){
