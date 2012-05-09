@@ -264,37 +264,25 @@ test('Class method version', function () {
 });
 
 test('Class multiple versions', function () {
-	// tests
-	// TODO we need to test for multiple class versions
-	// TODO we need to test if classy is implemented
-	// TODO we need to test for library implementation
+	// TODO: test what happens if mootools, prototype, classy are implemented
 });
 
-test('Cleanup check', function () {
-	// tests
-	equal(typeof(window.Class), 'function', 'class is available within the window object');
-	equal(typeof(Class), 'function', 'Class is available to be called');
-	equal(objIsEmpty(Class.prototype), true, 'prototype is empty');
-
-	testConstructor(Class);
-});
-
-test('Demo examples', function () {
+test('Class demo examples', function () {
 	var Dimmer = new Class({
 		initialize: function (container) {
 			this.container = document.getElementById(container);
 		},
 		showDim: function () {
-			return 'show dim';
+			alert('show dim');
 		},
 		hideDim: function () {
-			return 'hide dim';
+			alert('hide dim');
 		}
 	});
 
 	var Lightbox = new Class({
 		initialize: function (container) {
-
+			this.container = document.getElementById(container);
 		},
 		show: function () {
 			this.showDim();
@@ -304,12 +292,26 @@ test('Demo examples', function () {
 		},
 		hideDim: function () {
 			this.parent();
-			return 'hide dim and all other elements';
+			alert('hide custom dim');
 		}
 	});
 
+	// TODO: I would expect the implemented dimmer to be added to the :parent
+	// TODO: so we can overwrite it within the Lightbox
+	Lightbox.implement([Dimmer]);
+
 	// tests
-	equal(typeof(Class.version), 'string', 'Class.version() can be called');
+	var lb = new Lightbox();
+		lb.hideDim();
+});
+
+test('Cleanup check', function () {
+	// tests
+	equal(typeof(window.Class), 'function', 'class is available within the window object');
+	equal(typeof(Class), 'function', 'Class is available to be called');
+	equal(objIsEmpty(Class.prototype), true, 'prototype is empty');
+
+	testConstructor(Class);
 });
 
 /**
