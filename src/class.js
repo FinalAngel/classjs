@@ -8,7 +8,7 @@
 	"use strict";
 
 	// saving constants
-	var VERSION = '1.0 Beta 2';
+	var VERSION = '1.0 Beta 1';
 	var ORIGINAL = window.Class;
 	var CONSTRUCTOR = function () {};
 
