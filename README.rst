@@ -14,6 +14,9 @@ Documentation
 
 Go to `https://readthedocs.org/docs/finalangel/...` for a full documentation, examples and tests.
 
+Please use github to report bugs or feature requests. Include a `jsfiddle <https://jsfiddle.net>`_
+or equivalent example whenever possible for issues and bugs.
+
 
 License
 -------
