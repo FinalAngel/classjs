@@ -41,7 +41,6 @@
 	Class.extend = function (obj) {
 		// check if implement is passed through extend
 		if(obj.implement) {
-			// TODO implementing and overwriting own methods (testcase)
 			this.prototype = extend(this.prototype, implement(obj.implement));
 			// remove implement from obj
 			delete obj.implement;
