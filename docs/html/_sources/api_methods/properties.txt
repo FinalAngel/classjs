@@ -1,0 +1,79 @@
+*******************
+Class.js properties
+*******************
+
+The following properties can be used within a new Class object through ``Class.$extend(object)``.
+
+
+Class.initialize: function
+==========================
+
+``(returns constructor)`` - The initialize function is used as the constructor when a new instances is created.
+
+Create a new Class::
+
+	var Animal = new Class({
+	    initialize: function(name, age) {
+	        this.name = name;
+	        this.age = age;
+	    }
+	});
+
+Invoking the new Class, name and age will be assigned::
+
+	new Animal('Satan', 21);
+
+
+Older versions instead of new Class(); using Class.$extend();
+
+
+Class.options: object
+=====================
+
+``(returns object)`` - The object property bounds options to the new instance.
+Those are than available inside the instsance scope.
+
+Attach options to the class::
+
+	var Animal = Class.$extend({
+	    options {
+	        'health': 100,
+	        'extinct': false,
+	    },
+	    initialize: function () {
+	        alert('This animation will last ' + this.options.fx + ' ms.');
+	    }
+	});
+
+Mege custom options with instance options inside initialize::
+
+	$.extend(true, {}, this.options, options);
+
+Call options outside a class::
+
+	if(Animal.options.extinct) {
+	    alert('animal is extinct');
+	}
+
+
+Class.implements: function
+==========================
+
+``(returns object)`` - Implements adopts properties from one or more other classes without inheritance.
+Useful when implementing a default set of properties in multiple classes.
+
+Create an object with a base method::
+
+	var Types: {
+	    mammal: function () {
+	        alert('There are now mammals available.');
+	    }
+	}
+
+Implement this option within the class::
+
+	var Animal = new Class({
+		implement: [Types]
+	});
+
+This function works only on object without prototypes such as class.js itself. Hope to improve that soon...

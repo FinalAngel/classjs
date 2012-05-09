@@ -1,0 +1,121 @@
+*******
+methods
+*******
+
+The following methods can be attached to a new class.
+
+new Class(object);
+==================
+
+``(returns object)`` - This is the class constructor and passes the provided object to the instances prototype.
+
+Create a new Class::
+
+    var Animal = new Class({
+        initialite: function (name, age) {
+            this.name = name;
+            this.age = age;
+        },
+        eat: function () {
+            alert(this.name, + ' is eating now.');
+        }
+    });
+
+For a better explanation to ``initialize`` consult the class.js properties section.
+
+
+Class.extend(object)
+====================
+
+``(returns object)`` - The object or class passed through extend will be **merged** with the assigned class following
+the previous example.
+
+Extend the class::
+
+    Animal.extend({
+        die: function () {
+            alert(this.name + ' died at age ' + this.age);
+        }
+    });
+
+    var cat = new Animal('Sora', 5);
+        cat.die(); // alerts "Sora died at age 5"
+
+
+Class.implement(array)
+======================
+
+``(returns object)`` - Each object or class within the array will be **added** to the ssigned class following
+the previous example.
+
+Implementing new methods::
+
+    var Mammal = new Class({
+        swim: function () {
+            alert(this.name + ' can swim now.');
+        },
+        dive: function () {
+            alert(this.name + ' can dive now.');
+        }
+    });
+
+    var Bird = {
+        fly: function () {
+            alert(this.name + ' can fly now.');
+        }
+    };
+
+    Animal.implement([Mammal, Bird]);
+
+    var cat = new Animal('Sora', 5);
+        cat.swim(); // alerts "Sora can swim now."
+        cat.dive(); // alerts "Sora can dive now."
+        cat.fly(); // alerts "Sora can fly now."
+
+
+
+
+
+Class.setOptions(object)
+========================
+
+``(object)`` - Creates a new instance of the class by bypassing the constructor and assigning the attributes from the given object.
+This is useful if you want to attach methods to an object recieved from a JSON object::
+
+    var MyClass = Class.$extend({
+        __init__ : function() { alert('called'); },
+        toString() : function() {
+            return this.value;
+        })
+    });
+    var obj = MyClass.$withData({value: 42});
+    alert(obj.toString());
+
+The example above will alert "42" only. So the constructor is not called but you
+
+
+Class.noConflict()
+==================
+
+``(returns object)`` - Removes the Class object from the window object and restores what was there before Classy was loaded.
+It then returns the class object from the function. This makes it possible to use multiple versions of Classy
+side by side or in combination with other libraries that also define an object with that name.
+
+Sample usuage::
+
+    (function (Classy) {
+        // use Classy here without any conflict.
+    })(Class.noConflict());
+
+
+Class.super()
+=============
+
+``(returns object)`` - When called from within a Classy function this invokes the parent function of the same name.
+The arguments are forwarded directly. Check out the examples above for how that works.
+
+
+Class.version()
+===============
+
+``(returns string)`` - Returns the current Classy version as a string.

@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guidelines &mdash; classjs 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="classjs 1.0 documentation" href="../index.html" />
+    <link rel="prev" title="Class.js properties" href="../api_methods/properties.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../api_methods/properties.html" title="Class.js properties"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">classjs 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="guidelines">
+<h1>Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this headline">¶</a></h1>
+<p>If you want to write your own plugins using class.js please follow those guidelines to create a common
+ground for development.</p>
+<div class="section" id="creating-your-plugin">
+<h2>Creating your plugin<a class="headerlink" href="#creating-your-plugin" title="Permalink to this headline">¶</a></h2>
+<p>First, create a JavaScript file and include the following information within your header:</p>
+<ul class="simple">
+<li>the authors name</li>
+<li>the plugins version</li>
+<li>the plugins licence</li>
+<li>the plugins dependencies</li>
+</ul>
+<p>For example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * @author      Angelo Dini</span>
+<span class="cm"> * @version     1.0</span>
+<span class="cm"> * @copyright   Distributed under the BSD Licence.</span>
+<span class="cm"> * @requires    class.js, jquery</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<p>Define a namespace for your plugin, there is no need to increase the amount of global variables.</p>
+<p>I prefere to use Cl as the shorthand for <strong>Cl</strong> ass:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Cl</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Cl</span> <span class="o">||</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>Than create a closure so all your variables stay private, as class.js uses by itself:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// your code here</span>
+<span class="p">})();</span>
+
+<span class="c1">// you might want to pass some custom variables</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+        <span class="c1">// your code here</span>
+<span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Than create your plugin within the closure using your namespace:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Cl</span><span class="p">.</span><span class="nx">MyPlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Class</span><span class="p">({</span>
+        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s1">&#39;My first plugin&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>You should always use camel case for a class name.</p>
+</div>
+<div class="section" id="submitting-your-plugin">
+<h2>Submitting your plugin<a class="headerlink" href="#submitting-your-plugin" title="Permalink to this headline">¶</a></h2>
+<p>If you successfully created a plugin worth spreading, send me the link via twitter <a class="reference external" href="http://twitter.com/finalangel">http://twitter.com/finalangel</a>
+and I will include it on the plugins list.</p>
+</div>
+<div class="section" id="submitting-core-plugins">
+<h2>Submitting core plugins<a class="headerlink" href="#submitting-core-plugins" title="Permalink to this headline">¶</a></h2>
+<p>There will be a special list for core plugins. Rather than writing multiple plugins for the sam usage,
+we should approach a method by combining base features for a core plugin and extend its functionality
+through class.js. This is, in the end, the whole meaning of this library.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Guidelines</a><ul>
+<li><a class="reference internal" href="#creating-your-plugin">Creating your plugin</a></li>
+<li><a class="reference internal" href="#submitting-your-plugin">Submitting your plugin</a></li>
+<li><a class="reference internal" href="#submitting-core-plugins">Submitting core plugins</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../api_methods/properties.html"
+                        title="previous chapter">Class.js properties</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/guidelines.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../api_methods/properties.html" title="Class.js properties"
+             >previous</a> |</li>
+        <li><a href="../index.html">classjs 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Angelo Dini.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

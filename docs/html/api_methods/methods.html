@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class.extend(object) &mdash; classjs 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="classjs 1.0 documentation" href="../index.html" />
+    <link rel="next" title="Class.js properties" href="properties.html" />
+    <link rel="prev" title="How to update" href="../introduction/how_to_update.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="properties.html" title="Class.js properties"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../introduction/how_to_update.html" title="How to update"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">classjs 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>The following methods can be used as soon as a new instance has been created:</p>
+<div class="section" id="class-extend-object">
+<h1>Class.extend(object)<a class="headerlink" href="#class-extend-object" title="Permalink to this headline">¶</a></h1>
+<p>(object) - The class object will be passed through Class.$extend({}); to create a new class with all the methods
+described underneath.</p>
+<p>Create a new class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="nx">Class</span><span class="p">.</span><span class="nx">$extend</span><span class="p">({</span>
+        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="nx">eat</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="o">+</span> <span class="s1">&#39; is eating now.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Extend the class:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>var Cat = Animal.$extend({</dt>
+<dd><dl class="first docutils">
+<dt>die: function () {</dt>
+<dd>alert(this.name + &#8216; died at age &#8216; + this.age);</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>});</p>
+<p>new Cat(&#8216;Sora&#8217;, 5);
+Cat.die();</p>
+</div></blockquote>
+</div>
+<div class="section" id="class-setoptions-object">
+<h1>Class.setOptions(object)<a class="headerlink" href="#class-setoptions-object" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - Creates a new instance of the class by bypassing the constructor and assigning the attributes from the given object.
+This is useful if you want to attach methods to an object recieved from a JSON object:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="nx">Class</span><span class="p">.</span><span class="nx">$extend</span><span class="p">({</span>
+    <span class="nx">__init__</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;called&#39;</span><span class="p">);</span> <span class="p">},</span>
+    <span class="nx">toString</span><span class="p">()</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="p">})</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">MyClass</span><span class="p">.</span><span class="nx">$withData</span><span class="p">({</span><span class="nx">value</span><span class="o">:</span> <span class="mi">42</span><span class="p">});</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>The example above will alert &#8220;42&#8221; only. So the constructor is not called but you</p>
+</div>
+<div class="section" id="class-noconflict">
+<h1>Class.noConflict()<a class="headerlink" href="#class-noconflict" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - Removes the Class object from the window object and restores what was there before Classy was loaded.
+It then returns the class object from the function. This makes it possible to use multiple versions of Classy
+side by side or in combination with other libraries that also define an object with that name.</p>
+<p>Sample usuage:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Classy</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// use Classy here without any conflict.</span>
+<span class="p">})(</span><span class="nx">Class</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-super">
+<h1>Class.super()<a class="headerlink" href="#class-super" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - When called from within a Classy function this invokes the parent function of the same name.
+The arguments are forwarded directly. Check out the examples above for how that works.</p>
+</div>
+<div class="section" id="class-version">
+<h1>Class.version()<a class="headerlink" href="#class-version" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">string)</span></tt> - Returns the current Classy version as a string.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Class.extend(object)</a></li>
+<li><a class="reference internal" href="#class-setoptions-object">Class.setOptions(object)</a></li>
+<li><a class="reference internal" href="#class-noconflict">Class.noConflict()</a></li>
+<li><a class="reference internal" href="#class-super">Class.super()</a></li>
+<li><a class="reference internal" href="#class-version">Class.version()</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../introduction/how_to_update.html"
+                        title="previous chapter">How to update</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="properties.html"
+                        title="next chapter">Class.js properties</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api_methods/methods.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="properties.html" title="Class.js properties"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../introduction/how_to_update.html" title="How to update"
+             >previous</a> |</li>
+        <li><a href="../index.html">classjs 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Angelo Dini.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

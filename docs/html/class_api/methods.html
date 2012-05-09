@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>methods &mdash; classjs 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="classjs 1.0 documentation" href="../index.html" />
+    <link rel="next" title="properties" href="properties.html" />
+    <link rel="prev" title="How to update" href="../introduction/how_to_update.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="properties.html" title="properties"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../introduction/how_to_update.html" title="How to update"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">classjs 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="methods">
+<h1>methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h1>
+<p>The following methods can be attached to a new class.</p>
+<div class="section" id="new-class-object">
+<h2>new Class(object);<a class="headerlink" href="#new-class-object" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - This is the class constructor and passes the provided object to the instances prototype.</p>
+<p>Create a new Class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Class</span><span class="p">({</span>
+    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">eat</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; is eating now.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>For a better explanation to <tt class="docutils literal"><span class="pre">initialize</span></tt> consult the class.js properties section.</p>
+</div>
+<div class="section" id="class-extend-object">
+<h2>Class.extend(object)<a class="headerlink" href="#class-extend-object" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - The object or class passed through extend will be <strong>merged</strong> with the assigned class following
+the previous example.</p>
+<p>Extend the class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Animal</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">die</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; died at age &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">&#39;Sora&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="nx">cat</span><span class="p">.</span><span class="nx">die</span><span class="p">();</span> <span class="c1">// alerts &quot;Sora died at age 4&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-implement-array">
+<h2>Class.implement(array)<a class="headerlink" href="#class-implement-array" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - Each object or class within the array will be <strong>added</strong> to the assigned class following
+the previous example.</p>
+<p>Implementing new methods:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// preparing a class</span>
+<span class="kd">var</span> <span class="nx">Mammal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Class</span><span class="p">({</span>
+    <span class="nx">swim</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; can swim now.&#39;</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">dive</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; can dive now.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// preparing a normal object</span>
+<span class="kd">var</span> <span class="nx">Bird</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">fly</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; can fly now.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">implement</span><span class="p">([</span><span class="nx">Mammal</span><span class="p">,</span> <span class="nx">Bird</span><span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">&#39;Sora&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="nx">cat</span><span class="p">.</span><span class="nx">swim</span><span class="p">();</span> <span class="c1">// alerts &quot;Sora can swim now.&quot;</span>
+    <span class="nx">cat</span><span class="p">.</span><span class="nx">dive</span><span class="p">();</span> <span class="c1">// alerts &quot;Sora can dive now.&quot;</span>
+    <span class="nx">cat</span><span class="p">.</span><span class="nx">fly</span><span class="p">();</span> <span class="c1">// alerts &quot;Sora can fly now.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-getoptions">
+<h2>Class.getOptions()<a class="headerlink" href="#class-getoptions" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - Gathers assigned options and returns them.</p>
+<p>Getting options from a class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Class</span><span class="p">({</span>
+    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;age&#39;</span><span class="o">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">name</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">age</span> <span class="o">||</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">getOptions</span><span class="p">();</span> <span class="c1">// returns { &#39;name&#39;: &#39;&#39;, &#39;age&#39;: null }</span>
+</pre></div>
+</div>
+<p>It is not possible to get the options once an instance has been created.
+You can access the instance objects through their options name <tt class="docutils literal"><span class="pre">cat.options.name</span></tt>.</p>
+</div>
+<div class="section" id="class-setoptions-object">
+<h2>Class.setOptions(object)<a class="headerlink" href="#class-setoptions-object" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">object)</span></tt> - Sets and merges a given options object to the classes internal options object.</p>
+<p>Setting options for a class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Class</span><span class="p">({</span>
+    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;age&#39;</span><span class="o">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">name</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">age</span> <span class="o">||</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">setOptions</span><span class="p">({</span>
+    <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
+    <span class="s1">&#39;dead&#39;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">getOptions</span><span class="p">();</span> <span class="c1">// returns { &#39;name&#39;: undefined, &#39;age&#39;: null, &#39;dead&#39;: false }</span>
+</pre></div>
+</div>
+<p>It is not possible to change the options once an instance has been created.
+You can access the instance objects through their options name <tt class="docutils literal"><span class="pre">cat.options.name</span></tt>.</p>
+</div>
+<div class="section" id="class-noconflict">
+<h2>Class.noConflict()<a class="headerlink" href="#class-noconflict" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">Class)</span></tt> - Removes the Class object from the window object and restores what was there before
+class.js was loaded.</p>
+<p>Using class.js with multiple libraries:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// loading MooTools</span>
+<span class="kd">var</span> <span class="nx">Classy</span> <span class="o">=</span> <span class="nx">Class</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Classy</span><span class="p">({</span>
+    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">eat</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; is eating now.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">&#39;Sora&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="nx">cat</span><span class="p">.</span><span class="nx">eat</span><span class="p">();</span> <span class="c1">// alerts &quot;Sora is eating now.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-version">
+<h2>Class.version<a class="headerlink" href="#class-version" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">string)</span></tt> - Returns the current running class.js version as a string.</p>
+<blockquote>
+<div>alert(Class.version); // alerts current class.js version</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">methods</a><ul>
+<li><a class="reference internal" href="#new-class-object">new Class(object);</a></li>
+<li><a class="reference internal" href="#class-extend-object">Class.extend(object)</a></li>
+<li><a class="reference internal" href="#class-implement-array">Class.implement(array)</a></li>
+<li><a class="reference internal" href="#class-getoptions">Class.getOptions()</a></li>
+<li><a class="reference internal" href="#class-setoptions-object">Class.setOptions(object)</a></li>
+<li><a class="reference internal" href="#class-noconflict">Class.noConflict()</a></li>
+<li><a class="reference internal" href="#class-version">Class.version</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../introduction/how_to_update.html"
+                        title="previous chapter">How to update</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="properties.html"
+                        title="next chapter">properties</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/class_api/methods.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="properties.html" title="properties"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../introduction/how_to_update.html" title="How to update"
+             >previous</a> |</li>
+        <li><a href="../index.html">classjs 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Angelo Dini.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
