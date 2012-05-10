@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# classjs documentation build configuration file, created by
-# sphinx-quickstart on Tue Apr  3 09:48:09 2012.
+# Classy JS documentation build configuration file, created by
+# sphinx-quickstart on Thu May 10 13:37:09 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -28,7 +28,7 @@ import sys, os
 extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -37,10 +37,10 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'src/index'
 
 # General information about the project.
-project = u'classjs'
+project = u'Classy JS'
 copyright = u'2012, Angelo Dini'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -64,7 +64,7 @@ release = '1.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ['build']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -82,8 +82,6 @@ exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
-
-highlight_language = 'javascript'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -166,26 +164,21 @@ html_static_path = ['static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'classjsdoc'
+htmlhelp_basename = 'ClassyJSdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+# The paper size ('letter' or 'a4').
+#latex_paper_size = 'letter'
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
-
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
-}
+#latex_font_size = '10pt'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'classjs.tex', u'classjs Documentation',
+  ('index', 'ClassyJS.tex', u'Classy JS Documentation',
    u'Angelo Dini', 'manual'),
 ]
 
@@ -203,6 +196,9 @@ latex_documents = [
 # If true, show URL addresses after external links.
 #latex_show_urls = False
 
+# Additional stuff for the LaTeX preamble.
+#latex_preamble = ''
+
 # Documents to append as an appendix to all manuals.
 #latex_appendices = []
 
@@ -215,30 +211,6 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'classjs', u'classjs Documentation',
+    ('index', 'classyjs', u'Classy JS Documentation',
      [u'Angelo Dini'], 1)
 ]
-
-# If true, show URL addresses after external links.
-#man_show_urls = False
-
-
-# -- Options for Texinfo output ------------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-  ('index', 'classjs', u'classjs Documentation',
-   u'Angelo Dini', 'classjs', 'One line description of project.',
-   'Miscellaneous'),
-]
-
-# Documents to append as an appendix to all manuals.
-#texinfo_appendices = []
-
-# If false, no module index is generated.
-#texinfo_domain_indices = True
-
-# How to display URL addresses: 'footnote', 'no', or 'inline'.
-#texinfo_show_urls = 'footnote'
