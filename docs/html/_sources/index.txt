@@ -13,7 +13,7 @@ JavaScript's prototypal inheritance. class.js strives to mimic classical class i
 provided by other languages such as Python, Java or C. Its syntax is heavily inspired
 by MooTools class implementation.
 
-The latest stable version is |release|
+The latest stable version is **|release|** - https://github.com/finalangel/classjs
 
 
 ############
