@@ -12,7 +12,7 @@ by MooTools's class implementation.
 Documentation
 -------------
 
-Go to `https://readthedocs.org/docs/finalangel/...` for a full documentation, examples and tests.
+Go to `http://readthedocs.org/docs/classjs` for a full documentation.
 
 Please use github to report bugs or feature requests. Include a `jsfiddle <http://jsfiddle.net>`_
 or equivalent example whenever possible for issues and bugs.
