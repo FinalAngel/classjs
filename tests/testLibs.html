@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>QUnit Test Suite</title>
+	<link type="text/css" rel="stylesheet" href="/tests/qunit/qunit.css" media="all" />
+	<!-- libs -->
+	<script type="text/javascript" src="/src/class.js"></script>
+	<script type="text/javascript">
+		var Classy = Class.noConflict();
+	</script>
+	<script type="text/javascript" src="/tests/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="/tests/libs/mootools.min.js"></script>
+	<script type="text/javascript" src="/tests/libs/prototype.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var Tester = new Classy({
+			initialize: function (message) {
+				this.message = message;
+				// show message on dom
+				document.write(message);
+			},
+			back: function () {
+				(this.message && this.message !== '') ? alert('Test SUCCEEDED') : alert('Test FAILED');
+
+				var modal = confirm('Do you want to go back to the tests overview?');
+				if(modal) window.location.href = '/tests/';
+			}
+		});
+
+		var test = new Tester('no conflicts');
+			test.back();
+	</script>
+</body>
+</html>

@@ -37,6 +37,7 @@ test('Class constructor', function () {
 	var Correct = new Class({
 		'isCorrect': function () {}
 	});
+	// using strict mode allows it at this point to "forget" the new keyword
 	var Wrong = Class({
 		'isWrong': function () {}
 	});
@@ -44,6 +45,7 @@ test('Class constructor', function () {
 	equal(typeof(Wrong.prototype.isWrong), 'function', 'invoking class without the new keyword works');
 
 	equal(typeof(new Correct().isCorrect), 'function', 'invoking instance with new keyword works');
+	// you should not be able to call Wrong().isWrong without the new keyword
 	equal(typeof(new Wrong().isWrong), 'function', 'invoking instance with new keyword works');
 
 	testConstructor(Animal);
@@ -60,6 +62,8 @@ test('Class noConflict', function () {
 	deepEqual(Classy, Original, 'noConflict binds the new variable with Class behaviour');
 
 	testConstructor(Animal);
+
+	ok(true, 'For a live example consult libsTest.html');
 
 	window.Class = Original;
 });
@@ -263,24 +267,22 @@ test('Class method version', function () {
 	equal(typeof(Class.version), 'string', 'Class.version() can be called');
 });
 
-test('Class multiple versions', function () {
-	// TODO: test what happens if mootools, prototype, classy are implemented
-});
-
 test('Class demo examples', function () {
 	var Dimmer = new Class({
 		initialize: function (container) {
 			this.container = document.getElementById(container);
 		},
 		showDim: function () {
-			alert('show dim');
+			console.log('first');
+			return 'show dim';
 		},
 		hideDim: function () {
-			alert('hide dim');
+			return 'hide dim';
 		}
 	});
 
 	var Lightbox = new Class({
+		implement: [Dimmer],
 		initialize: function (container) {
 			this.container = document.getElementById(container);
 		},
@@ -291,18 +293,19 @@ test('Class demo examples', function () {
 			this.hideDim();
 		},
 		hideDim: function () {
+			// this does NOT work, implement overwrites custom methods
+			// if you want to create a custom hideDime use extend on Dimmer
 			this.parent();
-			alert('hide custom dim');
+			return 'hide custom dim';
 		}
 	});
 
-	// TODO: I would expect the implemented dimmer to be added to the :parent
-	// TODO: so we can overwrite it within the Lightbox
 	Lightbox.implement([Dimmer]);
 
-	// tests
 	var lb = new Lightbox();
-		lb.hideDim();
+
+	// tests
+	equal(lb.hideDim(), 'hide dim', 'implement successfully overwrites the instnace method');
 });
 
 test('Cleanup check', function () {
