@@ -1,5 +1,5 @@
 # class.js - simple class based inheritance
-# copyright (c) 2010-2012 Angelo Dini and contributors
+# copyright (c) 2012 Angelo Dini and contributors
 # https://github.com/finalangel
 
 Some rights reserved.

@@ -22,4 +22,5 @@ License
 -------
 
 Distributed under the BSD Licence.
-Copyright (c) 2010-2012 Angelo Dini and contributors
+
+Copyright (c) 2012 Angelo Dini and contributors
