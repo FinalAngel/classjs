@@ -100,7 +100,7 @@ become a core plugin
 ====================
 
 Besides the above described plugins I maintain several core plugins like ``Cl.Lightbox`` or
-``Cl.Carousel`. Those core plugins differ in various ways:
+``Cl.Carousel``. Those core plugins differ in various ways:
 
 **A core plugin requires tests and documentation** preferable within the repository itself,
 with the option of external documentation. This allows for an easy development process and

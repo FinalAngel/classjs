@@ -28,8 +28,6 @@ implement: array
 
 ``(returns object)`` - Each object or class within the array will be **added** to the assigned class.
 
-Create an object with a base method::
-
 Implementing new methods::
 
     // preparing a class
@@ -104,6 +102,8 @@ this.parent()
 
 ``(returns function)`` - When called from within a class.js function this invokes the parent function of the same name.
 This is useful when extending an existing class.js plugin.
+
+Example usage of parent::
 
     var Animal = new Class({
     	initialize: function (name, age) {
