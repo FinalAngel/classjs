@@ -12,7 +12,7 @@ by MooTools's class implementation.
 Documentation
 -------------
 
-Go to `http://readthedocs.org/docs/classjs` for a full documentation.
+Go to `http://classjs.rtfd.org` for a full documentation.
 
 Please use github to report bugs or feature requests. Include a `jsfiddle <http://jsfiddle.net>`_
 or equivalent example whenever possible for issues and bugs.
