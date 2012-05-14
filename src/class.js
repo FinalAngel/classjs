@@ -24,6 +24,9 @@
 		if(obj.implement) {
 			obj = extend(obj, implement(obj.implement));
 			obj.implement = null;
+			var imp = obj.implement;
+			delete obj.implement;
+			obj = extend(obj, implement(imp));
 		}
 		// assign prototypes
 		CONSTRUCTOR.prototype = copy(obj);
