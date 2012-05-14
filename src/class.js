@@ -39,6 +39,7 @@
 
 	// adding class method extend
 	Class.extend = function (obj) {
+		var self = this;
 		// check if implement is passed through extend
 		if(obj.implement) {
 			this.prototype = extend(this.prototype, implement(obj.implement));
@@ -49,7 +50,7 @@
 		for(var key in obj) {
 			obj[key] = typeof obj[key] === 'function' && /parent/.test(obj[key].toString()) ? (function (method, name) {
 				return function () {
-					this.parent = CONSTRUCTOR._parent[name];
+					this.parent = self._parent[name];
 					return method.apply(this, arguments);
 				};
 			})(obj[key], key) : obj[key]
