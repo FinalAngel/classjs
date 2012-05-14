@@ -151,7 +151,7 @@ test('Class method implement', function () {
 	equal(typeof(Cat.prototype.cuteness), 'function', 'cuteness has been added');
 	strictEqual(Cat.prototype.invincible, true, 'cuteness has been added');
 	strictEqual(Cat.prototype.superpower, true, 'cuteness has been added');
-	strictEqual(Cat.prototype.implement, null, 'implement has not been passed');
+	strictEqual(Cat.prototype.implement, undefined, 'implement has not been passed');
 	equal(myCat.cuteness(), 'Sora\'s level is 99', 'appropriate methods can be called');
 });
 
