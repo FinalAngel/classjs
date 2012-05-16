@@ -117,6 +117,13 @@ the previous example.</p>
     <span class="nx">cat</span><span class="p">.</span><span class="nx">fly</span><span class="p">();</span> <span class="c1">// alerts &quot;Sora can fly now.&quot;</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">implement simply <strong>copies</strong> object methods over into the new class and breaks the prototypal chain.
+It does not create a parent link nor does it copy <tt class="docutils literal"><span class="pre">initialize</span></tt> into the new class.
+Implemented methods cannot be overwritten to prevent accidental conflicts. Use extend to modify
+available class methods.</p>
+</div>
 </div>
 <div class="section" id="class-getoptions">
 <h2>Class.getOptions()<a class="headerlink" href="#class-getoptions" title="Permalink to this headline">¶</a></h2>
@@ -167,7 +174,7 @@ You can access the instance objects through their options name <tt class="docuti
 </div>
 <div class="section" id="class-noconflict">
 <h2>Class.noConflict()<a class="headerlink" href="#class-noconflict" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">Class)</span></tt> - Removes the Class object from the window object and restores what was there before
+<p><tt class="docutils literal"><span class="pre">(returns</span> <span class="pre">Class)</span></tt> - Removes the class object from the window object and restores what was there before
 class.js was loaded.</p>
 <p>Using class.js with multiple libraries:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// loading MooTools</span>

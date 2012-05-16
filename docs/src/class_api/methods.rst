@@ -75,6 +75,12 @@ Implementing new methods::
         cat.dive(); // alerts "Sora can dive now."
         cat.fly(); // alerts "Sora can fly now."
 
+.. note::
+  implement simply **copies** object methods over into the new class and breaks the prototypal chain.
+  It does not create a parent link nor does it copy ``initialize`` into the new class.
+  Implemented methods cannot be overwritten to prevent accidental conflicts. Use extend to modify
+  available class methods.
+
 
 Class.getOptions()
 ==================
@@ -132,7 +138,7 @@ You can access the instance objects through their options name ``cat.options.nam
 Class.noConflict()
 ==================
 
-``(returns Class)`` - Removes the Class object from the window object and restores what was there before
+``(returns Class)`` - Removes the class object from the window object and restores what was there before
 class.js was loaded.
 
 Using class.js with multiple libraries::
