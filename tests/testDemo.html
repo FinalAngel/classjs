@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>QUnit Test Suite</title>
+	<link type="text/css" rel="stylesheet" href="/tests/qunit/qunit.css" media="all" />
+	<!-- libs -->
+	<script type="text/javascript" src="/src/class.js"></script>
+	<script type="text/javascript" src="/tests/libs/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	var app = {};
+
+	jQuery(document).ready(function ($) {
+
+		// create a general dimmer element that can be
+		// extended or implemented
+		var Dimmer = new Class({
+
+			initialize: function (container) {
+				this.dimmer = $(container);
+				this.dimmerVisible = false;
+				console.log('call dimmer with container as: ' + container);
+			},
+
+			triggerDim: function () {
+				(this.dimmerVisible) ? this._hideDim() : this._showDim();
+			},
+
+			_showDim: function () {
+				this.dimmer.fadeIn();
+				this.dimmerVisible = true;
+			},
+
+			_hideDim: function () {
+				this.dimmer.fadeOut();
+				this.dimmerVisible = false;
+			}
+
+		});
+
+		// create a general modal window that can be
+		// extended or implemented
+		var Modal = new Class({
+
+			initialize: function (container) {
+				this.modal = $(container);
+				this.modalVisible = false;
+				console.log('call modal with container as: ' + container);
+			},
+
+			triggerModal: function () {
+				(this.modalVisible) ? this._hideModal() : this._showModal();
+			},
+
+			_hideModal: function () {
+				this.modal.show();
+				this.modalVisible = true;
+			},
+
+			_showModal: function () {
+				this.modal.hide();
+				this.modalVisible = false;
+			}
+
+		});
+
+		// creating a custom modal window
+		// with custom initializer and additional methods
+		var MyModal = Modal.extend({
+
+			initialize: function (container) {
+				this.parent(container);
+				console.log('call new modal with container as: ' + container);
+			},
+
+			setContent: function (content) {
+				this.modal.html(content);
+			}
+
+		});
+
+		// creating custom Application which implements those functions
+		var App = new Class({
+
+			implement: [Dimmer, Modal],
+
+			options: {
+				'dimmer': '#dimmer',
+				'modal': '#modal'
+			},
+
+			initialize: function (container, options) {
+				// setting correct options
+				this.options = $.extend({}, this.options, options);
+				// because implement only copies the methods, we need to reinitialize them
+				this.dimmer = $(this.options.dimmer);
+				this.modal = $(this.options.modal);
+				this.dimmerVisible = false;
+				this.modalVisible = false;
+
+				console.log('call APP with container as: ' + container);
+			},
+
+			// implement creates reserved namespaces which cannot be overwritten
+			// this insures you don't accidently overwrite methods
+			triggerDim: function () {
+				alert('does nothing');
+			}
+
+		});
+
+		App.implement([Dimmer, Modal]);
+
+		// testing our application
+		// var modal = new MyModal('#modal');
+
+		app = new App('#appContainer', {});
+	});
+	</script>
+
+	<div id="dimmer" style="display:none; position:absolute; left:0; top:0; z-index:10; width:100%; height:100%; background:#000; opacity:0.6;"></div>
+
+	<div id="modal" style="display:none; position:absolute; left:-50%; top:0; z-index:100; margin-left:-100px; width:200px; height:100px;">
+		<a href="#">close</a>
+	</div>
+</body>
+</html>
