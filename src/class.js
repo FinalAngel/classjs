@@ -5,7 +5,7 @@
  */
 
 (function(){
-	"use strict";
+	'use strict';
 
 	// saving constants
 	var VERSION = '1.0 Beta 1';
