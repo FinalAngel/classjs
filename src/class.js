@@ -17,19 +17,19 @@
 		obj = obj || {};
 		// call initialize if given
 		CONSTRUCTOR = function () {
-			var self = window === this ? copy(CONSTRUCTOR.prototype) : this;
 			return (this.initialize) ? this.initialize.apply(this, arguments) : self;
 		};
 		// adds implement to the class itself
 		if(obj.implement) {
-			obj = extend(obj, implement(obj.implement));
-			obj.implement = null;
+			var self = window === this ? copy(CONSTRUCTOR.prototype) : this;
 			var imp = obj.implement;
-			delete obj.implement;
+			remove(obj, 'implement');
 			obj = extend(obj, implement(imp));
 		}
 		// assign prototypes
 		CONSTRUCTOR.prototype = copy(obj);
+		// assign correct constructor
+		CONSTRUCTOR.constructor = CONSTRUCTOR;
 		// save initial object as parent so it can be called by this.parent
 		CONSTRUCTOR._parent = copy(obj);
 		// attaching class properties to constructor
@@ -47,7 +47,7 @@
 		if(obj.implement) {
 			this.prototype = extend(this.prototype, implement(obj.implement));
 			// remove implement from obj
-			delete obj.implement;
+			remove(obj, 'implement');
 		}
 		// check if we should invoke parent when its called within a method
 		for(var key in obj) {
@@ -98,6 +98,20 @@
 		return new F();
 	}
 
+	// insures the removal of a given method name
+	function remove(obj , name, safe){
+		// if save is active we need to copy all attributes over.
+		if(safe) {
+			var safeObj = {};
+			for(var key in obj) {
+				if(key !== name) safeObj[key] = obj[key];
+			}
+		} else {
+			delete obj[name];
+		}
+		return safeObj || obj;
+    }
+
 	// helper for merging two object with each other
 	function extend(oldObj, newObj, preserve) {
 		// failsave if something goes wrong
@@ -128,11 +142,14 @@
 			// check if a class is implemented and save its prototype
 			if(typeof(array[i]) === 'function') array[i] = array[i].prototype;
 
+			// safely remove initialize
+			var safe = remove(array[i], 'initialize', true);
+
 			// we use implement again if array has the apropriate methiod, otherwise we extend
-			if(array[i].implement) {
-				collection = implement(array[i].implement);
+			if(safe.implement) {
+				collection = implement(safe.implement);
 			} else {
-				collection = extend(collection, array[i].prototype || array[i]);
+				collection = extend(collection, safe);
 			}
 		}
 
