@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to &mdash; classjs 1.0 documentation</title>
+    <title>Plugins &mdash; classjs 1.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="classjs 1.0 documentation" href="../../index.html" />
-    <link rel="next" title="List of plugins" href="list.html" />
-    <link rel="prev" title="properties" href="../class_api/properties.html" /> 
+    <link rel="next" title="List of plugins" href="plugins_list.html" />
+    <link rel="prev" title="Contribution guide" href="guide.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,10 +37,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="list.html" title="List of plugins"
+          <a href="plugins_list.html" title="List of plugins"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../class_api/properties.html" title="properties"
+          <a href="guide.html" title="Contribution guide"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">classjs 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -51,12 +51,12 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="how-to">
-<h1>How to<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="plugins">
+<h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h1>
 <p>Creating and extending plugins is the entire purpose of class.js.
 To encourage users to write and extend plugins, we need to establish some common guidelines.</p>
-<div class="section" id="create-a-plugin">
-<h2>create a plugin<a class="headerlink" href="#create-a-plugin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-a-plugin">
+<h2>Creating a plugin<a class="headerlink" href="#creating-a-plugin" title="Permalink to this headline">¶</a></h2>
 <p>First of all, create a JavaScript file and include the following information within the top of your script:</p>
 <ul class="simple">
 <li>the authors name</li>
@@ -122,19 +122,21 @@ plugins namespaces. class.js uses this system by itself:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="submit-your-plugin">
-<h2>submit your plugin<a class="headerlink" href="#submit-your-plugin" title="Permalink to this headline">¶</a></h2>
-<p>If you successfully created a plugin worth spreading let me know <a class="reference external" href="https://twitter.com/finalangel">https://twitter.com/finalangel</a> and I will
-include it within the plugins list. I just require the a website or download link.</p>
+<div class="section" id="submitting-a-plugin">
+<h2>Submitting a plugin<a class="headerlink" href="#submitting-a-plugin" title="Permalink to this headline">¶</a></h2>
+<p>If you successfully created a plugin worth spreading let us know <a class="reference external" href="https://twitter.com/finalangel">https://twitter.com/finalangel</a> and we will
+include it within the plugins list. We just require the a website or download link.</p>
 </div>
-<div class="section" id="become-a-core-plugin">
-<h2>become a core plugin<a class="headerlink" href="#become-a-core-plugin" title="Permalink to this headline">¶</a></h2>
-<p>Besides the above described plugins I maintain several core plugins like <tt class="docutils literal"><span class="pre">Cl.Lightbox</span></tt> or
+<div class="section" id="core-plugins">
+<h2>Core plugins<a class="headerlink" href="#core-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Besides the above described plugins we maintain several core plugins like <tt class="docutils literal"><span class="pre">Cl.Lightbox</span></tt> or
 <tt class="docutils literal"><span class="pre">Cl.Carousel</span></tt>. Those core plugins differ in various ways:</p>
 <p><strong>A core plugin requires tests and documentation</strong> preferable within the repository itself,
 with the option of external documentation. This allows for an easy development process and
 insures a high level of quality. Those plugins receive a <strong>reserved namespace</strong> like
 <tt class="docutils literal"><span class="pre">Cl.AutoComplete</span></tt> and will be listed separately.</p>
+<p>It is also a <strong>must</strong> to provide an example page in which the functionality of the plugin can
+be demonstrated. Either through using github or a dedicated microsite.</p>
 <p>You are encouraged to use classjs as a name prefix when using a subversion system. For
 example <tt class="docutils literal"><span class="pre">classjs-lightbox</span></tt> or <tt class="docutils literal"><span class="pre">classjs-autocomplete</span></tt>.</p>
 <p>Your plugin also needs to be easily extendable while providing meaningful options.</p>
@@ -149,23 +151,23 @@ example <tt class="docutils literal"><span class="pre">classjs-lightbox</span></
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">How to</a><ul>
-<li><a class="reference internal" href="#create-a-plugin">create a plugin</a></li>
-<li><a class="reference internal" href="#submit-your-plugin">submit your plugin</a></li>
-<li><a class="reference internal" href="#become-a-core-plugin">become a core plugin</a></li>
+<li><a class="reference internal" href="#">Plugins</a><ul>
+<li><a class="reference internal" href="#creating-a-plugin">Creating a plugin</a></li>
+<li><a class="reference internal" href="#submitting-a-plugin">Submitting a plugin</a></li>
+<li><a class="reference internal" href="#core-plugins">Core plugins</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../class_api/properties.html"
-                        title="previous chapter">properties</a></p>
+  <p class="topless"><a href="guide.html"
+                        title="previous chapter">Contribution guide</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="list.html"
+  <p class="topless"><a href="plugins_list.html"
                         title="next chapter">List of plugins</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/src/plugins/how_to.txt"
+    <li><a href="../../_sources/src/contributing/plugins.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -192,10 +194,10 @@ example <tt class="docutils literal"><span class="pre">classjs-lightbox</span></
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="list.html" title="List of plugins"
+          <a href="plugins_list.html" title="List of plugins"
              >next</a> |</li>
         <li class="right" >
-          <a href="../class_api/properties.html" title="properties"
+          <a href="guide.html" title="Contribution guide"
              >previous</a> |</li>
         <li><a href="../../index.html">classjs 1.0 documentation</a> &raquo;</li> 
       </ul>

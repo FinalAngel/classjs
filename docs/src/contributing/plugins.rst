@@ -1,13 +1,13 @@
-******
-How to
-******
+*******
+Plugins
+*******
 
 Creating and extending plugins is the entire purpose of class.js.
 To encourage users to write and extend plugins, we need to establish some common guidelines.
 
 
-create a plugin
-===============
+Creating a plugin
+=================
 
 First of all, create a JavaScript file and include the following information within the top of your script:
 
@@ -89,23 +89,26 @@ If we combine those techniques your plugin would look like this::
     })();
 
 
-submit your plugin
-==================
+Submitting a plugin
+===================
 
-If you successfully created a plugin worth spreading let me know https://twitter.com/finalangel and I will
-include it within the plugins list. I just require the a website or download link.
+If you successfully created a plugin worth spreading let us know https://twitter.com/finalangel and we will
+include it within the plugins list. We just require the a website or download link.
 
 
-become a core plugin
-====================
+Core plugins
+============
 
-Besides the above described plugins I maintain several core plugins like ``Cl.Lightbox`` or
+Besides the above described plugins we maintain several core plugins like ``Cl.Lightbox`` or
 ``Cl.Carousel``. Those core plugins differ in various ways:
 
 **A core plugin requires tests and documentation** preferable within the repository itself,
 with the option of external documentation. This allows for an easy development process and
 insures a high level of quality. Those plugins receive a **reserved namespace** like
 ``Cl.AutoComplete`` and will be listed separately.
+
+It is also a **must** to provide an example page in which the functionality of the plugin can
+be demonstrated. Either through using github or a dedicated microsite.
 
 You are encouraged to use classjs as a name prefix when using a subversion system. For
 example ``classjs-lightbox`` or ``classjs-autocomplete``.

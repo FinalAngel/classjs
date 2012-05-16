@@ -21,11 +21,11 @@ Introduction
 ############
 
 .. toctree::
-	:maxdepth: 1
+    :maxdepth: 1
 
-	src/introduction/why_classjs.rst
-	src/introduction/how_to_implement.rst
-	src/introduction/how_to_update.rst
+    src/introduction/why_classjs.rst
+    src/introduction/how_to_implement.rst
+    src/introduction/how_to_update.rst
 
 
 #########
@@ -33,18 +33,19 @@ Class API
 #########
 
 .. toctree::
-	:maxdepth: 2
+    :maxdepth: 2
 
-	src/class_api/methods.rst
-	src/class_api/properties.rst
+    src/class_api/methods.rst
+    src/class_api/properties.rst
 
 
-#######
-Plugins
-#######
+############
+Contributing
+############
 
 .. toctree::
-	:maxdepth: 2
+    :maxdepth: 2
 
-	src/plugins/how_to.rst
-	src/plugins/list.rst
+    src/contributing/guide.rst
+    src/contributing/plugins.rst
+    src/contributing/plugins_list.rst
