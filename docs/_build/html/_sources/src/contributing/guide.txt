@@ -13,7 +13,7 @@ bug fixes and feature proposals. Please note the following guidelines:
 
 * It is good practice to fork a project and make your changes through your own fork.
 
-* Always send a pull request with the reference to the github ticket.
+* Always send a pull request with a reference to the github ticket.
 
 * Include enough information within your commit messages and pull request to make life easier for us.
 
@@ -21,4 +21,4 @@ bug fixes and feature proposals. Please note the following guidelines:
 Don't feel offended if a pull or feature request has been rejected. We always provide reasonable comments
 or information's about how your code could be improved.
 
-An easy start is always to extend or fix the documentation ;)
+Start by fixing or extending the documentation ;)
