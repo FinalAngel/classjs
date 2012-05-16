@@ -132,6 +132,11 @@ test('Class method implement', function () {
 
 	var Cat = new Class({
 		'implement': [Animal],
+		// initialize is not passed by implement
+		'initialize': function (name, age) {
+			this.name = name;
+			this.age = age;
+		},
 		'cuteness': function () {
 			return this.name + '\'s level is 99';
 		}
