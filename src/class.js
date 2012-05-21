@@ -10,34 +10,33 @@
 	// saving constants
 	var VERSION = '1.0 Beta 1';
 	var ORIGINAL = window.Class;
-	var CONSTRUCTOR = function () {};
 
 	// creating global class variable
 	var Class = window.Class = function (obj) {
 		obj = obj || {};
 		// call initialize if given
-		CONSTRUCTOR = function () {
+		var constructor = function () {
 			return (this.initialize) ? this.initialize.apply(this, arguments) : self;
 		};
 		// adds implement to the class itself
 		if(obj.implement) {
-			var self = window === this ? copy(CONSTRUCTOR.prototype) : this;
+			var self = window === this ? copy(constructor.prototype) : this;
 			var imp = obj.implement;
 			remove(obj, 'implement');
 			obj = extend(obj, implement(imp));
 		}
 		// assign prototypes
-		CONSTRUCTOR.prototype = copy(obj);
-		// assign correct constructor
-		CONSTRUCTOR.constructor = CONSTRUCTOR;
+		constructor.prototype = copy(obj);
+		// assign correct constructor for correct instanceof comparison
+		constructor.constructor = constructor;
 		// save initial object as parent so it can be called by this.parent
-		CONSTRUCTOR._parent = copy(obj);
+		constructor._parent = copy(obj);
 		// attaching class properties to constructor
 		for(var i = 0, values = ['extend', 'implement', 'getOptions', 'setOptions']; i < values.length; i++) {
-			CONSTRUCTOR[values[i]] = Class[values[i]];
+			constructor[values[i]] = Class[values[i]];
 		}
 
-		return CONSTRUCTOR;
+		return constructor;
 	};
 
 	// adding class method extend
