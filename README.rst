@@ -17,6 +17,8 @@ Go to `http://classjs.rtfd.org` for a full documentation.
 Please use github to report bugs or feature requests. Include a `jsfiddle <http://jsfiddle.net>`_
 or equivalent example whenever possible for issues and bugs.
 
+Testet in Chrome, Fierfox 4+, Internet Explorer 7+ and Opera.
+
 
 License
 -------
