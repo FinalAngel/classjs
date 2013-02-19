@@ -1,6 +1,6 @@
 /*!
  * @author      Angelo Dini
- * @version     1.0 Beta 1
+ * @version     1.0
  * @copyright	Distributed under the BSD License.
  */
 
@@ -8,7 +8,7 @@
 	'use strict';
 
 	// saving constants
-	var VERSION = '1.0 Beta 1';
+	var VERSION = '1.0';
 	var ORIGINAL = window.Class;
 
 	// creating global class variable
