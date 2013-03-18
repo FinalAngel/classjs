@@ -1,3 +1,4 @@
+=========================================
 class.js - simple class based inheritance
 =========================================
 
@@ -10,7 +11,7 @@ by MooTools's class implementation.
 
 
 Documentation
--------------
+=============
 
 Go to `http://classjs.rtfd.org` for a full documentation.
 
@@ -21,7 +22,7 @@ Testet in Chrome, Fierfox 4+, Internet Explorer 7+ and Opera.
 
 
 License
--------
+=======
 
 Distributed under the BSD Licence.
 
