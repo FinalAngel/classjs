@@ -2,15 +2,15 @@
 <html>
 <head>
 	<title>QUnit Test Suite</title>
-	<link type="text/css" rel="stylesheet" href="/tests/qunit/qunit.css" media="all" />
+	<link type="text/css" rel="stylesheet" href="qunit/qunit.css" media="all" />
 	<!-- libs -->
-	<script type="text/javascript" src="/src/class.js"></script>
+	<script type="text/javascript" src="../src/class.js"></script>
 	<script type="text/javascript">
 		var Classy = Class.noConflict();
 	</script>
-	<script type="text/javascript" src="/tests/libs/jquery.min.js"></script>
-	<script type="text/javascript" src="/tests/libs/mootools.min.js"></script>
-	<script type="text/javascript" src="/tests/libs/prototype.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.min.js"></script>
+	<script type="text/javascript" src="libs/mootools.min.js"></script>
+	<script type="text/javascript" src="libs/prototype.min.js"></script>
 </head>
 <body>
 	<script type="text/javascript">
@@ -26,7 +26,7 @@
 				(this.message && this.message !== '') ? alert('Test SUCCEEDED') : alert('Test FAILED');
 
 				var modal = confirm('Do you want to go back to the tests overview?');
-				if(modal) window.location.href = '/tests/';
+				if(modal) window.location.href = '../tests/';
 			}
 
 		});
