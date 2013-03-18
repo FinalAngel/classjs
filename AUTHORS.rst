@@ -1,4 +1,4 @@
-class.js and the class.js modules are written and maintained by:
+the class.js library is written and maintained by:
 
 - Angelo Dini <angelo.dini@divio.ch>
 
