@@ -1,10 +1,10 @@
-/**
- * @author		Angelo Dini
- * @version     2.0
- * @copyright	http://www.divio.ch under the BSD Licence
+/*!
+ * @author      Angelo Dini - github.com/finalangel/classjs
+ * @copyright	Distributed under the BSD License.
+ * @version     2.0.1
  */
 
-/**
+/*
  * TESTS
  */
 module("class.js");
@@ -322,7 +322,7 @@ test('Cleanup check', function () {
 	testConstructor(Class);
 });
 
-/**
+/*
  * HELPERS
  */
 // test if an obj is empty or not
