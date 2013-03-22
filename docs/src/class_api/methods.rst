@@ -42,6 +42,21 @@ Extend the class::
     var cat = new Animal('Sora', 4);
         cat.die(); // alerts "Sora died at age 4"
 
+You can create a new instance and extend it, without modififying the parent class::
+
+    var MyAnimal = new Class(Animal);
+        MyAnimal.extend({
+            clone: function () {
+               alert(this.name + ' can clone itself now.');
+            }
+        });
+
+    // can't clone
+    var sora = new Animal('Sora', 4);
+    var pitschy = new MyAnimal('Pitschy', 4);
+        // sora.clone(); fails
+        pitschy.clone(); // can clone
+
 
 Class.implement(array)
 ======================

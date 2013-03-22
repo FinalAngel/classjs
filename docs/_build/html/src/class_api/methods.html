@@ -86,6 +86,21 @@ the previous example.</p>
     <span class="nx">cat</span><span class="p">.</span><span class="nx">die</span><span class="p">();</span> <span class="c1">// alerts &quot;Sora died at age 4&quot;</span>
 </pre></div>
 </div>
+<p>You can create a new instance and extend it, without modififying the parent class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">MyAnimal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Class</span><span class="p">(</span><span class="nx">Animal</span><span class="p">);</span>
+    <span class="nx">MyAnimal</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+        <span class="nx">clone</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+           <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; can clone itself now.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+<span class="c1">// can&#39;t clone</span>
+<span class="kd">var</span> <span class="nx">sora</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">&#39;Sora&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pitschy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyAnimal</span><span class="p">(</span><span class="s1">&#39;Pitschy&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="c1">// sora.clone(); fails</span>
+    <span class="nx">pitschy</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span> <span class="c1">// can clone</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="class-implement-array">
 <h2>Class.implement(array)<a class="headerlink" href="#class-implement-array" title="Permalink to this headline">¶</a></h2>
