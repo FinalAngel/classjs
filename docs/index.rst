@@ -8,7 +8,7 @@
 Welcome
 #######
 
-class.js is a JavaScript library for building class based object-oriented programs using
+Class.js is a JavaScript library for building class based object-oriented programs using
 JavaScript's prototypal inheritance. class.js strives to mimic classical class inheritance
 provided by other languages such as Python, Java or C. Its syntax is heavily inspired
 by MooTools class implementation.
