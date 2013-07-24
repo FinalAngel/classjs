@@ -86,6 +86,13 @@ test('Class method extend', function () {
 	});
 	var name = 'Cat', age = 43, instance = new Animal(name, age);
 
+	var MyAnimal = new Class(Animal);
+		MyAnimal.extend({
+			'clone': function () {
+				return this.name + ' can be cloned now';
+			}
+		});
+
 	// tests
 	equal(typeof(Animal.prototype.initialize), 'function', 'initialize has been added');
 	equal(typeof(Animal.prototype.eat), 'function', 'eat has been added');
@@ -98,6 +105,13 @@ test('Class method extend', function () {
 	equal(instance.die(), name + ' died at age ' + age, 'this.die() can be called');
 
 	ok(instance instanceof Animal, 'correct instance for class is given');
+
+	equal(typeof(MyAnimal.prototype.clone), 'function', 'clone function is available on extended class');
+	equal(typeof(Animal.prototype.clone), 'undefined', 'clone function is not available on parent class');
+
+	ok(MyAnimal instanceof Animal, 'MyAnimal is an instanceof Animal');
+	ok(MyAnimal instanceof Class, 'MyAnimal is also an instanceof Class');
+	ok(Animal instanceof Class, 'Animal is an instanceof Class');
 });
 
 test('Class method implement', function () {

@@ -1,6 +1,6 @@
 /*!
  * @author      Angelo Dini
- * @version     1.0
+ * @version     1.0.1
  * @copyright	Distributed under the BSD License.
  */
 
@@ -8,7 +8,7 @@
 	'use strict';
 
 	// saving constants
-	var VERSION = '1.0';
+	var VERSION = '1.0.1';
 	var ORIGINAL = window.Class;
 
 	// creating global class variable
@@ -28,7 +28,7 @@
 		// assign prototypes
 		constructor.prototype = copy(obj);
 		// assign correct constructor for correct instanceof comparison
-		constructor.constructor = constructor;
+		constructor.prototype.constructor = obj;
 		// save initial object as parent so it can be called by this.parent
 		constructor._parent = copy(obj);
 		// attaching class properties to constructor
@@ -61,8 +61,8 @@
 		this._parent = extend(this._parent, obj, true);
 		// assign new prototype
 		this.prototype = extend(this.prototype, obj);
-		// return the class if its assigned
-		return this;
+
+    	return this;
 	};
 
 	// adding class method implement
