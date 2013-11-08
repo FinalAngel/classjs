@@ -1,7 +1,8 @@
 Class.js - Class Based Inheritance
 ==================================
 
-.. image:: https://travis-ci.org/FinalAngel/classjs-plugins.png?branch=master   :target: https://travis-ci.org/FinalAngel/classjs-plugins
+.. image:: https://travis-ci.org/FinalAngel/classjs-plugins.png?branch=master
+    :target: https://travis-ci.org/FinalAngel/classjs-plugins
 
 https://github.com/finalangel/classjs
 
