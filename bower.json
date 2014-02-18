@@ -1,0 +1,20 @@
+{
+	"name": "classjs",
+	"version": "1.0.0",
+	"ignore": [
+		"docs",
+		"tests",
+		".gitignore",
+		"*.rst",
+		"*.html",
+		"bower.json"
+	],
+	"dependencies": {},
+	"devDependencies": {},
+	"keywords": [
+		"class",
+		"classjs",
+		"javascript",
+		"library"
+	]
+}
