@@ -114,3 +114,5 @@ You are encouraged to use classjs as a name prefix when using a subversion syste
 example ``classjs-lightbox`` or ``classjs-autocomplete``.
 
 Your plugin also needs to be easily extendable while providing meaningful options.
+
+You can find a full list of the core plugins on the `Demo page <http://finalangel.github.io/classjs-plugins/>`_.
