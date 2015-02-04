@@ -7,8 +7,7 @@
         "tests",
         ".gitignore",
         "*.rst",
-        "*.html",
-        "bower.json"
+        "*.html"
     ],
     "dependencies": {},
     "devDependencies": {},
