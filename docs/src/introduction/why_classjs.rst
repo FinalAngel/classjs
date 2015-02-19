@@ -3,7 +3,7 @@ Why class.js
 ************
 
 I started learning JavaScript roughly in 2002 without the use of any framework.
-Back than Prototype was the big player and I did not understand its concept.
+Back then, Prototype was the big player and I did not understand its concept.
 I also had issues with Prototype’s none-modular approach splitting animation
 (script-aculo-us) from the core library.
 
