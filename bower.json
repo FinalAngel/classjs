@@ -1,6 +1,7 @@
 {
     "name": "class.js",
     "version": "1.0.0",
+    "main": "src/class.js",
     "ignore": [
         "docs",
         "tests",
